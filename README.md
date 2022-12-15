@@ -5,3 +5,7 @@ I funny at first to do things manually and actually learning what's what in Rasb
 But it soon becomes a tidious chore to install and tweak
 
 Hence this exact script:
+
+
+History:
+Version 1.0
