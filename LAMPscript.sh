@@ -2,6 +2,7 @@
 
 # Step 1: Run this as root/superuser, do sudo su or sudo
 # Step 2: Wait for the script to run
+# Inspired by: https://gist.github.com/robertogalan/9263320
 
 echo "Shell script to install apache/mysql/php/phpmyadmin"
 #wordpress into an EC2 instance of Amazon AMI Linux."
