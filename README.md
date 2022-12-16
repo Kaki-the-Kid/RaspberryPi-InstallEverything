@@ -8,6 +8,8 @@ But it soon becomes a tidious chore to install and tweak. Hence this exact scrip
 * Apache Webserver
 * PHP 8.2
 * MySQL
+* Table blog
+* Wordpress
 
 ## History
 Version 1.0
