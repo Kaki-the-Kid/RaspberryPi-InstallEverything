@@ -2,7 +2,6 @@
 
 # Step 1: Run this as root/superuser, do sudo su or sudo
 # Step 2: Wait for the script to run
-# Inspired by: https://gist.github.com/robertogalan/9263320
 
 echo "Shell script to install apache/mysql/php/phpmyadmin"
 #wordpress into an EC2 instance of Amazon AMI Linux."
@@ -88,74 +87,86 @@ sudo
 service mysqld start
 
 # Create a database named blog
-sudo mysqladmin -uroot -s drop blog create blog
+sudo mysqladmin -uroot -s drop wordpress_db create wordpress_db
 
 # Secure database
 # non interactive mysql_secure_installation with a little help from expect.
-exit
-SECURE_MYSQL=$(expect -c "
+#SECURE_MYSQL=$(expect -c "
  
-set timeout 10
-spawn mysql_secure_installation
+#set timeout 10
+#spawn mysql_secure_installation
+sudo mysql_secure_installation
  
-expect \"Enter current password for root (enter for none):\"
-send \"\r\"
+#expect \"Enter current password for root (enter for none):\"
+#send \"\r\"
  
-expect \"Change the root password?\"
-send \"y\r\"
-expect \"New password:\"
-send \"password\r\"
-expect \"Re-enter new password:\"
-send \"password\r\"
-expect \"Remove anonymous users?\"
-send \"y\r\"
+#expect \"Change the root password?\"
+#send \"y\r\"
+#expect \"New password:\"
+#send \"password\r\"
+#expect \"Re-enter new password:\"
+#send \"password\r\"
+#expect \"Remove anonymous users?\"
+#send \"y\r\"
  
-expect \"Disallow root login remotely?\"
-send \"y\r\"
+#expect \"Disallow root login remotely?\"
+#send \"y\r\"
+# 
+#expect \"Remove test database and access to it?\"
+#send \"y\r\"
  
-expect \"Remove test database and access to it?\"
-send \"y\r\"
+#expect \"Reload privilege tables now?\"
+#send \"y\r\"
  
-expect \"Reload privilege tables now?\"
-send \"y\r\"
- 
-expect eof
-")
- 
-echo "$SECURE_MYSQL"
-exit
+#expect eof
+#")
+
+#echo "$SECURE_MYSQL"
+
+
+
+#********************************************
+# WordPress
+#********************************************
+# If the script won't install properly, there a guide on:
+# https://pimylifeup.com/raspberry-pi-wordpress/
 
 # Change directory to web root
 cd /var/www/html
 
 # Download Wordpress
-wget http://wordpress.org/latest.tar.gz
+sudo wget http://wordpress.org/latest.tar.gz
 
 # Extract Wordpress
-tar -xzvf latest.tar.gz
+sudo tar -xzvf latest.tar.gz
 
 # Rename wordpress directory to blog
-mv wordpress blog
+sudo mv wordpress blog
 
 # Change directory to blog
 cd /var/www/html/blog/
+
+# Making group www-data and put pi user in it
+sudo usermod -a -G www-data pi
+
+# Setting the right permission for group and user
+sudo chown -R -f www-data:www-data /var/www/html
 
 # Create a WordPress config file 
 mv wp-config-sample.php wp-config.php
 
 #set database details with perl find and replace
-sed -i "s/database_name_here/blog/g" /var/www/html/blog/wp-config.php
-sed -i "s/username_here/root/g" /var/www/html/blog/wp-config.php
-sed -i "s/password_here/password/g" /var/www/html/blog/wp-config.php
+sudo sed -i "s/database_name_here/blog/g" /var/www/html/blog/wp-config.php
+sudo sed -i "s/username_here/root/g" /var/www/html/blog/wp-config.php
+sudo sed -i "s/password_here/password/g" /var/www/html/blog/wp-config.php
 
 #create uploads folder and set permissions
 mkdir wp-content/uploads
-chmod 777 wp-content/uploads
+sudo chmod 777 wp-content/uploads
 
 #remove wp file
-rm /var/www/html/latest.tar.gz
+sudo rm /var/www/html/latest.tar.gz
 
 echo "Ready, go to http://'your ec2 url'/blog and enter the blog info to finish the installation."
 
 fi
-
