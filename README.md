@@ -12,6 +12,9 @@ But it soon becomes a tidious chore to install and tweak. Hence this exact scrip
 * Wordpress
 * Samba server
 
+# To-do
+* [ ] Use expect and dialog to better user
+* [ ] Select what soqftware user chooses to install
 ## History
 Version 1.0
 
