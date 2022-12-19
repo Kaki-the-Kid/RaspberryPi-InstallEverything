@@ -308,5 +308,7 @@ sudo smbpasswd -a pi
 # restart the samba service so that it loads in our configuration changes
 sudo systemctl restart smbd
 
+
+
 fi
 
