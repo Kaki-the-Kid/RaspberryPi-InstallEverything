@@ -10,6 +10,7 @@ But it soon becomes a tidious chore to install and tweak. Hence this exact scrip
 * MySQL
 * Table blog
 * Wordpress
+* Samba server
 
 ## History
 Version 1.0
