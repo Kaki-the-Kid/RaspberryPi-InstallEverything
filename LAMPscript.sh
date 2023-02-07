@@ -205,7 +205,7 @@ sudo nano /usr/share/phpmyadmin/config.inc.php
 # temporary directory where phpMyAdmin can store cache. Add the following line 
 # to the end of a file:
 echo "Puth this at the end of the file"
-$cfg['TempDir'] = '/var/lib/phpmyadmin/tmp';
+echo "$cfg['TempDir'] = '/var/lib/phpmyadmin/tmp';" > /usr/share/phpmyadmin/config.inc.php
 
 # Now we need to configure Apache. Create Apache configuration file for 
 # phpMyAdmin:
