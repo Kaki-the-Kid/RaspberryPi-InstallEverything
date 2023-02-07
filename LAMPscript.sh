@@ -229,7 +229,7 @@ sudo service apache2 restart
 # Install FTP Server on Raspberry Pi
 #********************************************
 # To install FTP server, run below command
-sudo apt install -Y pure-ftpd
+sudo apt install -y pure-ftpd
 
 # Once the FTP server is installed, you can try to connect to FTP server 
 # using FileZilla software
