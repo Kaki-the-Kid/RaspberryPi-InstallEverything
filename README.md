@@ -13,8 +13,9 @@ But it soon becomes a tidious chore to install and tweak. Hence this exact scrip
 * Samba server
 
 # To-do
-* [ ] Use expect and dialog to better user
-* [ ] Select what soqftware user chooses to install
+- [ ] Use expect and dialog to better user
+- [ ] Select what soqftware user chooses to install
+- [ ] On Ubuntu Mate PHP version is 8.1, correct of make addition to script
 ## History
 Version 1.0
 
